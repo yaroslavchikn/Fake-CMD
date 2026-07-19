@@ -4,13 +4,11 @@ import random
 import datetime
 import time
 import platform
-import subprocess
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 import psutil
 import cpuinfo
-import math
 
 class FakeCMD(QMainWindow):
     def __init__(self):
@@ -473,7 +471,7 @@ Microsoft Windows [Version {platform.release()}]
     # ========== РЕАЛИЗАЦИЯ КОМАНД ==========
     
     def help_command(self):
-        return r"""
+        return """
 Поддерживаемые команды:
 ------------------------
 ASSOC      - Вывод списка сопоставлений
@@ -742,15 +740,6 @@ WMIC       - WMI запросы (фейк)
         return None
     
     def color_command(self, command):
-        colors = {
-            '0': 'черный', '1': 'синий', '2': 'зеленый',
-            '3': 'голубой', '4': 'красный', '5': 'фиолетовый',
-            '6': 'желтый', '7': 'белый', '8': 'серый',
-            '9': 'светло-синий', 'A': 'светло-зеленый',
-            'B': 'светло-голубой', 'C': 'светло-красный',
-            'D': 'светло-фиолетовый', 'E': 'светло-желтый',
-            'F': 'ярко-белый'
-        }
         return "Цвет фона и текста изменен."
     
     def title_command(self, command):
@@ -830,7 +819,7 @@ C:.
         return result
     
     def reg_query_command(self):
-        return r"""
+        return """
 ! REG.EXE VERSION 3.0
 
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
@@ -971,11 +960,6 @@ AA-BB-CC-DD-EE-FF  \Device\Tcpip_{12345678-1234-1234-1234-123456789012}
     def update_effects(self):
         """Обновляет эффекты (мигание курсора и т.д.)"""
         self.effect_counter += 1
-        
-        # Меняем цвет текста каждые 5 секунд для эффекта CMD
-        if self.effect_counter % 50 == 0:
-            colors = ['#00ff00', '#00ffff', '#ffff00', '#ff00ff']
-            # Самый минимальный эффект, чтобы не раздражать
     
     def keyPressEvent(self, event):
         """Обработка клавиш для истории команд"""
