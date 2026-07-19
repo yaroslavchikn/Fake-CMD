@@ -473,7 +473,7 @@ Microsoft Windows [Version {platform.release()}]
     # ========== РЕАЛИЗАЦИЯ КОМАНД ==========
     
     def help_command(self):
-        return """
+        return r"""
 Поддерживаемые команды:
 ------------------------
 ASSOC      - Вывод списка сопоставлений
@@ -567,9 +567,9 @@ WMIC       - WMI запросы (фейк)
 Процессор(ы):                1 Установлено.
                              [{cpuinfo.get_cpu_info().get('brand_raw', 'Intel Core i7')}]
 Версия BIOS:                 American Megatrends Inc. 1.2.3
-Папка Windows:               C:\\Windows
-Системная папка:             C:\\Windows\\system32
-Загрузочный диск:            C:\\
+Папка Windows:               C:\Windows
+Системная папка:             C:\Windows\system32
+Загрузочный диск:            C:\
 Имя хоста:                   {self.computername}
 Первичный DNS-суффикс:       domain.local
 Тип узла:                    Гибридный
@@ -830,7 +830,7 @@ C:.
         return result
     
     def reg_query_command(self):
-        return """
+        return r"""
 ! REG.EXE VERSION 3.0
 
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
@@ -913,7 +913,7 @@ Excel.Sheet.12="C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE" %1
 """
     
     def nbtstat_command(self):
-        return """
+        return f"""
 Локальное имя:
    Имя:             {self.computername}
    Регистрация:     Уникальная
